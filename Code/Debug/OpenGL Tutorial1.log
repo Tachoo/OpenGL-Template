@@ -1,0 +1,7 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (OpenGL Tutorial1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  GLRenderer.cpp
+c:\users\arkms\downloads\opengl tutorial 1\opengl tutorial1\glrenderer.cpp(55): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\arkms\downloads\opengl tutorial 1\opengl tutorial1\glrenderer.cpp(56): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\arkms\downloads\opengl tutorial 1\opengl tutorial1\glrenderer.cpp(57): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\arkms\downloads\opengl tutorial 1\opengl tutorial1\glrenderer.cpp(58): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  OpenGL Tutorial1.vcxproj -> C:\Users\ARKMs\Downloads\OpenGL Tutorial 1\Debug\OpenGLTemplate.exe
