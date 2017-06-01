@@ -1,16 +1,15 @@
-﻿  LigthSpot.cpp
-  GLRenderer.cpp
-c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(28): warning C4838: la conversión de 'double' en 'float' requiere una conversión de restricción
-c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(28): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(29): warning C4838: la conversión de 'double' en 'float' requiere una conversión de restricción
-c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(29): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(67): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(68): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
-c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(90): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(95): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(96): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(97): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(98): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-  Generando código...
+﻿  GLRenderer.cpp
+c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(35): warning C4018: '<': no coinciden signed/unsigned
+c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(67): warning C4838: la conversión de 'double' en 'const float' requiere una conversión de restricción
+c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(67): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(70): warning C4838: la conversión de 'double' en 'const float' requiere una conversión de restricción
+c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(70): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(73): warning C4838: la conversión de 'double' en 'const float' requiere una conversión de restricción
+c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(73): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(76): warning C4838: la conversión de 'double' en 'const float' requiere una conversión de restricción
+c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(76): warning C4305: 'inicializando': truncamiento de 'double' a 'const float'
+c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(159): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(195): warning C4018: '<': no coinciden signed/unsigned
+c:\users\lord tacho\documents\visual studio 2017\projects\opengl template\code\glrenderer.cpp(201): warning C4700: se utilizó la variable local 'j' sin inicializar
   OpenGL Tutorial1.vcxproj -> C:\Users\Lord Tacho\Documents\Visual Studio 2017\Projects\OpenGL Template\Debug\OpenGLTemplate.exe
   OpenGL Tutorial1.vcxproj -> C:\Users\Lord Tacho\Documents\Visual Studio 2017\Projects\OpenGL Template\Debug\OpenGLTemplate.pdb (Partial PDB)

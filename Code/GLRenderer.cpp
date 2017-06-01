@@ -1,11 +1,20 @@
 #include "GLRenderer.h"
 
 float PosicionLuz[] = { 0.5,0.5,0.0,1.0 };
+float angle;
 GLRenderer::GLRenderer(void)//Creo que este es el contructor
 {
 	//Instancia de la ventana
 	m_hDC = NULL;
+	//Como tenemos un vector debemos de inicializar todas las spheras
+	for (int i = 0; i < 9; i++)
+	{
+		//Empujamos una funcion  haciendo el  OBJ=gluNewQuadric();
+		Spheres.push_back(gluNewQuadric());
+	}
+
 	// lista de puntos
+/*
 	std::vector<glm::vec2> Puntos;
 	// Punto Inicial
 	Puntos.push_back(glm::vec2(0.75,0.75) );
@@ -18,7 +27,21 @@ GLRenderer::GLRenderer(void)//Creo que este es el contructor
 	//punto Final
 	Puntos.push_back(glm::vec2(0.0, 0.75));
 	//
-	LigthSpot L_Luz(Puntos);
+	LigthSpot L_Luz(Puntos);*/
+}
+
+GLRenderer::~GLRenderer(void)
+{
+	for(int i=0;i<Spheres.size();i++)
+	{
+		//Como usamos un vector es mas facil hacer la eleminacion de sus componentes
+	if(Spheres[i]!=NULL)
+	{
+		gluDeleteQuadric(Spheres[i]);
+		Spheres[i] = NULL;
+	}
+
+	}
 }
 
 int GLRenderer::Inicializar(HDC _hdc, unsigned int _width, unsigned int _height)
@@ -35,21 +58,70 @@ int GLRenderer::Inicializar(HDC _hdc, unsigned int _width, unsigned int _height)
 
 						//calculamos la relacion del aspecto de la ventana
 	//gluPerspective(52.0f, (GLfloat)_width / (GLfloat)_height, 1.0f, 1000.0f);
+	
 	glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
-	glOrtho(-1.0,1.0,-1.0,1.0,-1.0,1.0);
+	glOrtho(-10.0,10.0,-10.0,10.0,-1.0,10.0);
 
-	float LuzAmbiente [] = {0.2,0.2,0.2,1.0};
-    float LuzDifusa [] = {0.8,0.8,0.8,1.0};
-    float LuzEspecular [] = {1.0,1.0,1.0,1.0};
+	const float LuzRojaColor [] = {0.5,0.1,0.2,1.0};
+    const float LuzRojaPos [] = {10.0,5.0,0.0,1.0};
+	//
+	const float LuzVerdeColor[] = { 0.1,0.6,0.2,1.0 };
+	const float LuzVerdePos[] = { -10.0,5.0,0.0,1.0 };
+	//
+	const float LuzAmarillaColor[] = { 0.2,0.2,0.2,1.0 };
+	const float LuzAmarillaPos[] = { -10.0,-5.0,0.0,1.0 };
+	//
+	const float LuzAzulColor[] = { 0.2,0.2,0.2,1.0 };
+	const float LuzAzulPos[] = { 10.0,-5.0,0.0,1.0 };
     //
-	glLightfv(GL_LIGHT0,GL_AMBIENT,LuzAmbiente);
-	glLightfv(GL_LIGHT0,GL_DIFFUSE,LuzDifusa);
+	/*
+	glLightfv(GL_LIGHT0, GL_SPECULAR, LuzEspecular);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, LuzEspecular);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, LuzEspecular);
 	glLightfv(GL_LIGHT0,GL_SPECULAR, LuzEspecular);
+	*/
+
+	float light_position[] = { 0, -1,0, 0.0f };
+	float light_ambient[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float light_diffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+
+	float mat_ambient[] = { 1.0f, 0.0f, 0.0f, 1.0f };
+	float mat_diffuse[] = { 0.0f, 1.0f, 0.0f, 1.0f };
+
+	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glShadeModel(GL_SMOOTH);
+
+	
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, LuzAmarillaColor);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, LuzAzulColor);
+	glLightfv(GL_LIGHT2, GL_DIFFUSE, LuzRojaColor);
+	glLightfv(GL_LIGHT4, GL_DIFFUSE, LuzVerdeColor);
 	//position inicial
 	
-	glLightfv(GL_LIGHT0, GL_POSITION, PosicionLuz);
+
+
+
+	glLightfv(GL_LIGHT1, GL_POSITION, LuzAmarillaPos);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+
+	glLightfv(GL_LIGHT2, GL_POSITION, LuzAzulPos);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+	
+	glLightfv(GL_LIGHT3, GL_POSITION, LuzVerdePos);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+
+	glLightfv(GL_LIGHT4, GL_POSITION, LuzRojaPos);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
 
 	glMatrixMode(GL_MODELVIEW); //cargmos la matrix del modelo
 	glLoadIdentity();   //movemos al origen la matriz de modelado
@@ -78,12 +150,13 @@ void GLRenderer::Update(float _deltaTime)
 {
 
 	//inicial
-	/**/
+	/*
 	  //between = from + (to - from) * factor;
-		PosicionLuz[0] +=   /*velocidad*/(0.05 * _deltaTime);
-		PosicionLuz[1] +=   /*velocidad*/(0.05 * _deltaTime);
-	   /**/
+		//PosicionLuz[0] +=   /*velocidad*///(0.05 * _deltaTime);
+		//PosicionLuz[1] +=   /*velocidad*/(0.05 * _deltaTime);
+	   
 		glLightfv(GL_LIGHT0, GL_POSITION, PosicionLuz);
+		angle += (0.5*_deltaTime);
 }
 
 void GLRenderer::Render()
@@ -92,6 +165,7 @@ void GLRenderer::Render()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();   //nos posisionamos en el centro
 
+	/*
 	float rojo[] = { 1.0,0.0,0.0,1.0 };
 	float verde[] = { 0.0,1.0,0.0,1.0 };
 	float azul[] = { 0.0,0.0,1.0,1.0 };
@@ -114,7 +188,27 @@ void GLRenderer::Render()
 			glVertex3f(j*incremento,(i+1)*incremento,-0.2);
 		}
 	}
-	glEnd();
+	glEnd();*/
+	glPushMatrix();
+	float w,j,k=0;
+	w = 1;
+	for  (int i = 0; i < Spheres.size();i++)
+	{
+
+		if (w > 5)
+		{
+			w = 0;
+			j++;
+		}
+		
+		gluSphere(Spheres[i], 0.2, 10, 10);
+		w++;
+		glTranslatef(Position.x+w,Position.y+j,Position.z+k);
+
+	}
+	glPopMatrix();
+	glRotatef(angle, 0.0, 0.0, 1.0);
+
 	//Mostramos todo lo dibujado //BACK Buffer
 	SwapBuffers(m_hDC);
 }
